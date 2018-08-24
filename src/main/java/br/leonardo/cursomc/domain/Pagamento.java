@@ -10,9 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.leonardo.cursomc.domain.enums.EstadoPagamento;
+
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)      //mapear herença
@@ -24,7 +25,7 @@ public abstract class Pagamento implements Serializable {
 	private Integer id;
 	private Integer estado;
 	
-	@JsonBackReference
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "pedido_id")       //relação um/um - id pedido tem q ser igual ao id pagamento
 	@MapsId
