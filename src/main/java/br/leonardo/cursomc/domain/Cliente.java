@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ public class Cliente implements Serializable{
 	private Integer tipo;
 	
 		
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "cliente", cascade=CascadeType.ALL) //cascade - toda mudança em CLIENTE muda em ENDERECO
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	//entidade fraca, relação no BD, cria no banco a tabela TELEFONE
